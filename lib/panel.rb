@@ -118,7 +118,13 @@ class Panel
   end
 
   def get_btc_value(currency)
-    tickers["BTC_#{currency}"]['last'].to_d
+    ticker = tickers["BTC_#{currency}"]
+    if ticker
+      ticker['last'].to_d
+    else
+      puts "BTC_#{currency} not found"
+      0
+    end
   end
 
   def tickers
